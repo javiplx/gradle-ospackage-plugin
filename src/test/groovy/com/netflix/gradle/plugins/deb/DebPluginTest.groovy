@@ -178,7 +178,7 @@ class DebPluginTest extends ProjectSpec {
         'optional' == scan.getHeaderEntry('Priority')
 
         scan.controlContents['./conffiles'].eachLine {
-            '/etc/init.d/served' == it || '/opt/bleah/main/groovy' == it
+            ['/etc/init.d/served', '/opt/bleah/main/groovy'].contains(it)
         }
         
         def file = scan.getEntry('./a/path/not/to/create/alone')
