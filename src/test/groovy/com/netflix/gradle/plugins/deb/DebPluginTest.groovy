@@ -153,7 +153,7 @@ class DebPluginTest extends ProjectSpec {
 
             from(srcDir.toString() + '/main/groovy') {
                 createDirectoryEntry true
-                //fileType = CONFIG | NOREPLACE
+                fileType = CONFIG | NOREPLACE
             }
 
             from(noParentsDir) {
@@ -178,9 +178,9 @@ class DebPluginTest extends ProjectSpec {
         'optional' == scan.getHeaderEntry('Priority')
 
         scan.controlContents['./conffiles'].eachLine {
-            '/etc/init.d/served' == it
+            ['/etc/init.d/served', '/opt/bleah/main/groovy'].contains(it)
         }
-        
+
         def file = scan.getEntry('./a/path/not/to/create/alone')
         file.isFile()
 
