@@ -19,3 +19,8 @@ notifications:
     on_success: change
     on_failure: always
     on_start: never
+deploy:
+  provider: releases
+  api_key: "a9a88573c08d8a08ffaecaffe920d8cc67407849"
+  file: dist/**/*
+  skip_cleanup: true
