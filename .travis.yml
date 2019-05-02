@@ -22,5 +22,6 @@ notifications:
 deploy:
   provider: releases
   api_key: "a9a88573c08d8a08ffaecaffe920d8cc67407849"
+  file_glob: true
   file: dist/**/*
   skip_cleanup: true
