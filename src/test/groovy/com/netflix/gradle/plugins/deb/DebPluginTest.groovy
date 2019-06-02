@@ -176,6 +176,8 @@ class DebPluginTest extends ProjectSpec {
         'amd64' == scan.getHeaderEntry('Architecture')
         'optional' == scan.getHeaderEntry('Priority')
 
+        scan.controlContents['./conffiles'].split('\n').length == 2
+
         scan.controlContents['./conffiles'].eachLine {
             '/etc/init.d/served' == it || '/opt/bleah/main/groovy' == it
         }
@@ -1043,6 +1045,8 @@ class DebPluginTest extends ProjectSpec {
 
         then:
         def scan = new Scanner(debTask.getArchivePath())
+
+        scan.controlContents['./conffiles'].split('\n').length == 2
 
         scan.controlContents['./conffiles'] == '/etc/init.d/served\n/etc/init.d/served2\n'
     }
